@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">School War</string>
+    <string name="user_profile_atv">School War - Profile</string>
+    <string name="user_about_atv">School War - About</string>
+    <string name="user_item_atv">School War - Items</string>
+    <string name="user_social_atv">School War - Social</string>
+    <string name="up_header">Name:</string>
+</resources>

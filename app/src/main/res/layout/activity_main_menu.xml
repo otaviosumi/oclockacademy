@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wellcome to SchoolWar"
+            android:textSize="30sp"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="70dp"
+            android:paddingBottom="70dp"/>
+
+        <LinearLayout
+            android:id="@+id/btn_menu_list"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+            <Button
+                android:id="@+id/start_new_game_btn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="new game"
+                android:onClick="new_game_selected"/>
+            <Button
+                android:id="@+id/exit_game_btn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="exit"
+                android:onClick="exit_game_selected"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cross_new_game_btn"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/btn_menu_list"/>
+        <ImageView
+            android:id="@+id/cross_exit_game_btn"
+            android:layout_width="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/btn_menu_list"/>
+
+
+        <ImageView
+            android:id="@+id/rotating_image"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/gear"
+            android:translationX="-80dp"
+            android:translationY="80dp"/>
+
+        <ImageView
+            android:id="@+id/rotating_image2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentRight="true"
+            android:translationY="-65dp"
+            android:translationX="65dp"
+            android:src="@drawable/gear_4_dots_hd" />
+    </RelativeLayout>
+
+</LinearLayout>
