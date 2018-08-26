@@ -8,11 +8,12 @@
         android:title=""
         app:showAsAction="always">
     <menu>
-    <!--<item-->
-        <!--android:id="@+id/main_menu"-->
-        <!--android:icon="@drawable/gear_ok"-->
-        <!--android:title="Main Menu"-->
-        <!--app:showAsAction="never"/>-->
+    <item
+        android:id="@+id/main_menu"
+        android:icon="@drawable/gear_ok"
+        android:title="Main Menu"
+        app:showAsAction="never"
+        android:visible="false"/>
     <item
         android:id="@+id/profile_menu"
         android:icon="@drawable/gear_profile"
