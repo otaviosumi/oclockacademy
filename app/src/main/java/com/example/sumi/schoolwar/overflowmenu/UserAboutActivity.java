@@ -12,10 +12,12 @@ import android.widget.ImageView;
 
 import com.example.sumi.schoolwar.MainMenu;
 import com.example.sumi.schoolwar.R;
+import com.example.sumi.schoolwar.datastructures.UserProfile;
 
 public class UserAboutActivity extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
+    UserProfile user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class UserAboutActivity extends AppCompatActivity {
         rotateImage.startAnimation(startRotateAnimation);
         rotateImage2.startAnimation(startRotateAnimation2);
         //-----------------------------------------------------------
+
     }
 
     @Override

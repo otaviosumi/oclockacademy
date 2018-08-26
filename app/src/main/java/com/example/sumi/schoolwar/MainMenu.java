@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.sumi.schoolwar.datastructures.UserProfile;
 import com.example.sumi.schoolwar.overflowmenu.UserAboutActivity;
 import com.example.sumi.schoolwar.overflowmenu.UserItemActivity;
 import com.example.sumi.schoolwar.overflowmenu.UserProfileActivity;
@@ -20,6 +21,7 @@ public class MainMenu extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
     private boolean canClose;
+    public static UserProfile user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,10 @@ public class MainMenu extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(getResources().getString(R.string.app_name));
+
+        //Loading Profile Info---------------------------------------
+        user = new UserProfile();
+        //-----------------------------------------------------------
 
     }
 

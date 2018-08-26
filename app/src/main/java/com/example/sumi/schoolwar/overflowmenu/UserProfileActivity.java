@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.sumi.schoolwar.MainMenu;
@@ -17,7 +19,7 @@ import com.example.sumi.schoolwar.R;
 public class UserProfileActivity extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
-
+    TextView name_tv, hp_tv, mp_tv;
     private Toolbar mActionBarToolbar;
 
     @Override
@@ -35,7 +37,14 @@ public class UserProfileActivity extends AppCompatActivity {
         rotateImage.startAnimation(startRotateAnimation);
         rotateImage2.startAnimation(startRotateAnimation2);
         //-----------------------------------------------------------
+        //Get all texters--------------------------------------------
+        name_tv = (TextView)findViewById(R.id.up_name_tv);
+        hp_tv = (TextView)findViewById(R.id.up_cur_hp);
+        mp_tv = (TextView)findViewById(R.id.up_cur_mp);
+        //-----------------------------------------------------------
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,4 +82,8 @@ public class UserProfileActivity extends AppCompatActivity {
         }
     }
 
+    public void take_hit_hp(View view) {
+        MainMenu.user.take_hit(1);
+        hp_tv.setText(MainMenu.user.getHp_current() + '/' + MainMenu.user.getHp_max());
+    }
 }
