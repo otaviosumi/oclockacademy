@@ -32,7 +32,7 @@
             android:id="@+id/up_max_hp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/up_header"
+            android:text="@string/hp_header"
             android:textSize="30dp"/>
         <TextView
             android:id="@+id/up_cur_hp"
@@ -44,7 +44,7 @@
             android:id="@+id/up_max_mp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/up_header"
+            android:text="@string/mp_header"
             android:textSize="30dp"/>
         <TextView
             android:id="@+id/up_cur_mp"
@@ -52,13 +52,18 @@
             android:layout_height="wrap_content"
             android:text="Jhon Doe"
             android:textSize="20dp"/>
-        <Button
-            android:id="@+id/take_hit"
-            android:layout_width="200dp"
+        <TextView
+            android:id="@+id/up_ailments_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="new game"
-            android:onClick="take_hit_hp"/>
+            android:text="@string/ailments_header"
+            android:textSize="30dp"/>
+        <ListView
+            android:id="@+id/ailments_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
     </LinearLayout>
 
 

@@ -64,12 +64,13 @@ public class UserAboutActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.about_menu:
-                intent = new Intent(this, UserAboutActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, UserAboutActivity.class);
+//                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }

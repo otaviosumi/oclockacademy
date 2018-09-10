@@ -9,18 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.sumi.schoolwar.MainMenu;
 import com.example.sumi.schoolwar.R;
 
+import java.util.ArrayList;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
     TextView name_tv, hp_tv, mp_tv;
+    ListView ailmentsList;
     private Toolbar mActionBarToolbar;
+    ArrayList<String> listItems = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,15 @@ public class UserProfileActivity extends AppCompatActivity {
         name_tv = (TextView)findViewById(R.id.up_name_tv);
         hp_tv = (TextView)findViewById(R.id.up_cur_hp);
         mp_tv = (TextView)findViewById(R.id.up_cur_mp);
+        ailmentsList = (ListView)findViewById(R.id.ailments_list);
         //-----------------------------------------------------------
+        //Fill things------------------------------------------------
+        name_tv.setText(MainMenu.user.getName());
+        hp_tv.setText(String.valueOf(MainMenu.user.getHp_current()) +'/' + String.valueOf(MainMenu.user.getHp_max()));
+        mp_tv.setText(String.valueOf(MainMenu.user.getMp_current()) + '/' + String.valueOf(MainMenu.user.getMp_max()));
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainMenu.user.getAilments());
+        ailmentsList.setAdapter(adapter);
+
     }
 
 
@@ -58,8 +73,8 @@ public class UserProfileActivity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.profile_menu:
-                intent = new Intent(this, UserProfileActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, UserProfileActivity.class);
+//                startActivity(intent);
                 return true;
             case R.id.items_menu:
                 intent = new Intent(this, UserItemActivity.class);
@@ -86,4 +101,5 @@ public class UserProfileActivity extends AppCompatActivity {
         MainMenu.user.take_hit(1);
         hp_tv.setText(MainMenu.user.getHp_current() + '/' + MainMenu.user.getHp_max());
     }
+
 }

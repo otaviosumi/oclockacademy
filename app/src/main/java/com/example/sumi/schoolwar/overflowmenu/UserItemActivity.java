@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.sumi.schoolwar.MainMenu;
 import com.example.sumi.schoolwar.R;
@@ -16,6 +18,8 @@ import com.example.sumi.schoolwar.R;
 public class UserItemActivity extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
+    private ArrayAdapter<String> adapter;
+    private ListView itemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,9 @@ public class UserItemActivity extends AppCompatActivity {
         rotateImage.startAnimation(startRotateAnimation);
         rotateImage2.startAnimation(startRotateAnimation2);
         //-----------------------------------------------------------
+        itemsList = (ListView)findViewById(R.id.items_list);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainMenu.user.getItens());
+        itemsList.setAdapter(adapter);
     }
 
     @Override
@@ -50,8 +57,8 @@ public class UserItemActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.items_menu:
-                intent = new Intent(this, UserItemActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, UserItemActivity.class);
+//                startActivity(intent);
                 return true;
             case R.id.social_menu:
                 intent = new Intent(this, UserSocialActivity.class);
@@ -69,5 +76,6 @@ public class UserItemActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }

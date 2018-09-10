@@ -6,4 +6,8 @@
     <string name="user_social_atv">School War - Social</string>
     <string name="up_header">Name:</string>
     <string name="welcome">Welcome</string>
+    <string name="hp_header">HP:</string>
+    <string name="mp_header">MP:</string>
+    <string name="ailments_header">Ailments:</string>
+    <string name="items_header">Your items:</string>
 </resources>

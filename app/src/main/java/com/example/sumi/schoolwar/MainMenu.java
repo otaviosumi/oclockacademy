@@ -46,6 +46,11 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
 
 
     public void new_game_selected(View view) {
@@ -70,7 +75,7 @@ public class MainMenu extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 btnImg.setImageResource(0);
                 if(fieldID == R.id.cross_exit_game_btn){
-                    finish();
+                    System.exit(1);
                 }
             }
 

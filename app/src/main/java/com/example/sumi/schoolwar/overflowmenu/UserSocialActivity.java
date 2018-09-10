@@ -54,8 +54,8 @@ public class UserSocialActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.social_menu:
-                intent = new Intent(this, UserSocialActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, UserSocialActivity.class);
+//                startActivity(intent);
                 return true;
             case R.id.main_menu:
                 intent = new Intent(this, MainMenu.class);
@@ -69,5 +69,7 @@ public class UserSocialActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
 }

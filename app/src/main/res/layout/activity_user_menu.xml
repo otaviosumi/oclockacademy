@@ -23,4 +23,26 @@
         android:translationX="65dp"
         android:src="@drawable/gear_4_dots_hd" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:showDividers="middle"
+        android:divider="@drawable/divider">
+        <TextView
+            android:id="@+id/items_header_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/items_header"
+            android:textSize="30dp"/>
+        <ListView
+            android:id="@+id/items_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
 </RelativeLayout>
