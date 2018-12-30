@@ -4,7 +4,7 @@ In a world where war is at your side everyday and everytime, you need to focus o
 
 ## Steps
 
-### Menus layouts:
+### Menus layouts (turn some into fragments?):
 - [x] Main menu
 - [x] Profile menu
 - [x] Itens menu
