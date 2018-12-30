@@ -8,7 +8,7 @@ In a world where war is at your side everyday and everytime, you need to focus o
 - [x] Main menu
 - [x] Profile menu
 - [x] Itens menu
-- [ ] Social menu
+- [ ] Social menu (let user keep track by themselvs?)
 - [ ] About menu
 
 ### Manager classes:
