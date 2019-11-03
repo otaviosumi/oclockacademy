@@ -1,0 +1,50 @@
+[
+	{
+		"id_text": 0,
+		"m_text": "Isso é um teste, escolhar uma opção 00000000000.",
+		"goto_text": [
+			{
+				"text":"link 1",
+				"id_link": 1
+			},
+			{
+				"text":"link 2",
+				"id_link": 2
+			},
+			{
+				"text":"link 3",
+				"id_link": 3
+			}
+		]
+	},
+	{
+		"id_text": 1,
+		"m_text": "Isso é um teste, escolhar uma opção 11111111.",
+		"goto_text": [
+			{
+				"text":"link 0",
+				"id_link": 0
+			}
+		]
+	},
+	{
+		"id_text": 2,
+		"m_text": "Isso é um teste, escolhar uma opção 222222222.",
+		"goto_text": [
+			{
+				"text":"link 0",
+				"id_link": 0
+			}
+		]
+	},
+	{
+		"id_text": 3,
+		"m_text": "Isso é um teste, escolhar uma opção 33333333.",
+		"goto_text": [
+			{
+				"text":"link 0",
+				"id_link": 0
+			}
+		]
+	},
+]

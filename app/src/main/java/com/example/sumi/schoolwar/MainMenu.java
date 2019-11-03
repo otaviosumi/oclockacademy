@@ -17,11 +17,20 @@ import com.example.sumi.schoolwar.overflowmenu.UserItemActivity;
 import com.example.sumi.schoolwar.overflowmenu.UserProfileActivity;
 import com.example.sumi.schoolwar.overflowmenu.UserSocialActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class MainMenu extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
     private boolean canClose;
     public static UserProfile user;
+    ArrayList<String> textlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +112,29 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void get_json(){
+        String json;
+        try {
+            InputStream is = getAssets().open("history_text.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+            JSONArray jsonArray = new JSONArray(json);
+
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject obj = jsonArray.getJSONObject(i);
+//                textlist.add(obj)
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
     /*
     @Override
