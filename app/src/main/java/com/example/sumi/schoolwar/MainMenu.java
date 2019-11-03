@@ -1,39 +1,27 @@
 package com.example.sumi.schoolwar;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.sumi.schoolwar.datastructures.TextAccess;
 import com.example.sumi.schoolwar.datastructures.UserProfile;
-import com.example.sumi.schoolwar.overflowmenu.UserAboutActivity;
-import com.example.sumi.schoolwar.overflowmenu.UserItemActivity;
-import com.example.sumi.schoolwar.overflowmenu.UserProfileActivity;
-import com.example.sumi.schoolwar.overflowmenu.UserSocialActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
 
     ImageView rotateImage, rotateImage2, btnImg;
     private boolean canClose;
     public static UserProfile user;
-    ArrayList<String> textlist = new ArrayList<>();
+    public static TextAccess textAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        textAccess = new TextAccess(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         //Animations-------------------------------------------------
@@ -52,27 +40,27 @@ public class MainMenu extends AppCompatActivity {
         //Loading Profile Info---------------------------------------
         user = new UserProfile();
         //-----------------------------------------------------------
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//        View decorView = getWindow().getDecorView();
+//        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        View decorView = getWindow().getDecorView();
+//        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//    }
 
     @Override
     public void onBackPressed() {
@@ -80,14 +68,21 @@ public class MainMenu extends AppCompatActivity {
     }
 
 
-
+    //Call for start game
     public void new_game_selected(View view) {
-        cross_selected(view, R.id.cross_new_game_btn);
+        if(findViewById( R.id.cross_new_game_btn).isEnabled()) {
+            cross_selected(view, R.id.cross_new_game_btn);
+        }
     }
 
+    //Exit the game
     public void exit_game_selected(View view) {
-        cross_selected(view, R.id.cross_exit_game_btn);
+        if(findViewById(R.id.cross_exit_game_btn).isEnabled()) {
+            cross_selected(view, R.id.cross_exit_game_btn);
+        }
      }
+
+    //Make decision to start or exit the game
     public void cross_selected(View view, final int fieldID){
         btnImg = (ImageView) findViewById(fieldID);
         Animation btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.selected_item);
@@ -97,12 +92,18 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onAnimationStart(Animation animation) {
 
+                findViewById(R.id.cross_new_game_btn).setEnabled(false);
+                findViewById(R.id.cross_exit_game_btn).setEnabled(false);
+
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
                 btnImg.setImageResource(0);
-                if(fieldID == R.id.cross_exit_game_btn){
+                if(fieldID == R.id.cross_new_game_btn){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Entrou e novo jogo", Toast.LENGTH_LONG);
+                    toast.show();
+                }else if(fieldID == R.id.cross_exit_game_btn){
                     System.exit(1);
                 }
             }
@@ -113,64 +114,4 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-
-    public void get_json(){
-        String json;
-        try {
-            InputStream is = getAssets().open("history_text.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-            JSONArray jsonArray = new JSONArray(json);
-
-            for(int i = 0; i < jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-//                textlist.add(obj)
-            }
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-    }
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.profile_menu:
-                intent = new Intent(this, UserProfileActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.items_menu:
-                intent = new Intent(this, UserItemActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.social_menu:
-                intent = new Intent(this, UserSocialActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.main_menu:
-                intent = new Intent(this, MainMenu.class);
-                startActivity(intent);
-                return true;
-            case R.id.about_menu:
-                intent = new Intent(this, UserAboutActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }*/
-
 }

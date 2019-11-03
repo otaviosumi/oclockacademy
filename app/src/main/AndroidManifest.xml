@@ -16,9 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".overflowmenu.UserProfileActivity" />
-        <activity android:name=".overflowmenu.UserItemActivity" />
-        <activity android:name=".overflowmenu.UserSocialActivity" />
         <activity android:name=".overflowmenu.UserAboutActivity"></activity>
     </application>
 
