@@ -12,13 +12,14 @@ import java.io.InputStream;
 public class TextAccess {
 
     private Context myContext;
+    private JSONArray jsonArray;
 
     public TextAccess(Context myContext) {
         this.myContext = myContext;
     }
 
     public void get_json(){
-        String json;
+        String json = null;
         try {
             InputStream is = myContext.getAssets().open("history_text.json");
             int size = is.available();
@@ -26,17 +27,23 @@ public class TextAccess {
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
-            JSONArray jsonArray = new JSONArray(json);
-
-            for(int i = 0; i < jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-//                textlist.add(obj)
-            }
+            jsonArray = new JSONArray(json);
 
         }catch (IOException e){
             e.printStackTrace();
         }catch (JSONException e){
             e.printStackTrace();
         }
+    }
+
+    public JSONObject get_json_obj(int index){
+        get_json();
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = jsonArray.getJSONObject(index);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }
